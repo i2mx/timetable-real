@@ -1,0 +1,45 @@
+---
+interface Props {
+    title: string
+    linkTitle?: string
+    linkURL?: string
+}
+
+const { title, linkTitle, linkURL } = Astro.props
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="description" content="a website to display a kamar timetable" />
+        <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+        <title>{title}</title>
+    </head>
+    <body>
+        <a href={linkURL} id="swup">
+            <button
+                class="fixed bottom-7 right-9 h-10 w-10 rounded-full bg-slate-300 from-red-300 to-orange-300 text-center text-transparent shadow-md transition-all hover:w-24 hover:scale-105 hover:bg-gradient-to-br hover:text-white hover:shadow-lg"
+                >{linkTitle}</button
+            >
+        </a>
+        <main class="h-screen w-screen px-48 py-10">
+            <div id="swup">
+                <slot />
+            </div>
+        </main>
+
+        <script>
+            import Swup from 'swup'
+            import SwupFadeTheme from '@swup/fade-theme'
+            import SwupOverlayTheme from '@swup/overlay-theme'
+
+            const swup = new Swup({
+                plugins: [
+                    new SwupFadeTheme(),
+                ]
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro"
+import Timetable from "../components/Timetable";
+---
+
+<Layout title="timetabler" linkTitle="Details" linkURL="/details">
+
+    <Timetable client:only />
+    
+    <script>
+        const studentID = localStorage.getItem("studentID")
+        const portal = localStorage.getItem("portal")
+        const password = localStorage.getItem("password")
+
+        if (!studentID || !portal || !password) {
+            location.href = "/details"
+        }
+    </script>
+</Layout>
