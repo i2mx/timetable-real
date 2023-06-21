@@ -6,6 +6,8 @@ import webmanifest from 'astro-webmanifest'
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://i2mx.github.io',
+  base: '/tt',
 	integrations: [
 		tailwind(),
 		solidJs(),
