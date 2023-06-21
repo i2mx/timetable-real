@@ -13,10 +13,10 @@ export default defineConfig({
 		solidJs(),
 		webmanifest({
 			name: 'timetabler',
-			icon: 'favicon.png', // source for favicon & icons
+			icon: 'public/favicon.png', // source for favicon & icons
 			short_name: 'timetabler',
 			description: 'an app to display a kamar timetable',
-			start_url: '',
+			start_url: '/',
 			theme_color: '#fca5a5',
 			background_color: '#ffffff',
 			display: 'standalone'
