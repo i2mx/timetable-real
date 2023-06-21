@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro"
 import Timetable from "../components/Timetable";
 ---
 
-<Layout title="timetabler" linkTitle="Details" linkURL="/details">
+<Layout title="timetabler" linkTitle="Details" linkURL="/tt/details">
 
     <Timetable client:only />
     
@@ -13,7 +13,7 @@ import Timetable from "../components/Timetable";
         const password = localStorage.getItem("password")
 
         if (!studentID || !portal || !password) {
-            location.href = "/details"
+            location.href = "/tt/details"
         }
     </script>
 </Layout>
