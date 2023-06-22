@@ -16,7 +16,7 @@ export default defineConfig({
 			icon: 'public/favicon.png', // source for favicon & icons
 			short_name: 'timetabler',
 			description: 'an app to display a kamar timetable',
-			start_url: '/',
+			start_url: '/tt/',
 			theme_color: '#fca5a5',
 			background_color: '#ffffff',
 			display: 'standalone'
