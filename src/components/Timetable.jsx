@@ -8,6 +8,7 @@ export default function Timetable() {
 	const password = localStorage.getItem('password')
 
 	const [timetable, setTimetable] = createSignal()
+	const [message, setMessage] = createSignal('Loading...')
 
 	fetch('https://kamar-api.deno.dev/', {
 		method: 'POST',
@@ -29,28 +30,28 @@ export default function Timetable() {
 
 			setTimetable(TT)
 		})
+		.catch((err) => setMessage('Incorrect Details'))
 	return (
 		<Show
 			when={timetable()}
 			fallback={
 				<div class="rounded bg-gradient-to-br from-red-300 to-orange-300 px-24 py-8 text-center text-7xl font-bold text-white">
-					Loading...
+					{message}
 				</div>
 			}
 		>
 			<div class="flex justify-center">
-				<table class="border-collapse min-w-full">
+				<table class="min-w-full border-collapse">
 					<For each={timetable()}>
 						{(day) => (
 							<tr class="group min-w-full from-red-300 to-orange-300 first:rounded-md first:bg-gradient-to-br first:p-4 first:shadow-sm">
 								<For each={day}>
 									{(period) => (
-										<td class="group-first:border-none first:border-none last:border-none border-x w-auto px-8 py-4">
+										<td class="w-auto border-x px-8 py-4 first:border-none last:border-none group-first:border-none">
 											{() => {
-                        if(typeof(period) == 'string'){
-                          return <h1 class="font-mono text-lg font-extrabold">{period}</h1>
-                        }
-												else if (period.length < 7) {
+												if (typeof period == 'string') {
+													return <h1 class="font-mono text-lg font-extrabold">{period}</h1>
+												} else if (period.length < 7) {
 													const periodName = period[0]
 													const periodTime = period[1]
 													return (
@@ -72,7 +73,7 @@ export default function Timetable() {
 															<h1 class="font-mono text-lg font-extrabold">{subject}</h1>
 															<h1 class="font-mono">{periodTime}</h1>
 															<h2 class="font-mono">
-															 {roomCode} <span class='text-slate-500'>{teacherCode}</span>
+																{roomCode} <span class="text-slate-500">{teacherCode}</span>
 															</h2>
 														</>
 													)
